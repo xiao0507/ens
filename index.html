@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CET6 六级预测模拟卷 · 在线智能体</title>
+  <meta name="description" content="内置题库、无需 API Key，可在线生成 1–50 套大学英语六级预测模拟卷（写作/听力/阅读/翻译），答案默认隐藏、三段式解析，手机电脑自适应。" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>📝 CET6 六级预测模拟卷</h1>
+      <p class="sub">内置题库 · 无需 API Key · 支持第 1–50 套 · 手机 / 电脑自适应</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 控制台 -->
+    <section class="panel console" aria-label="控制面板">
+      <div class="row set-row">
+        <label for="setInput">套号</label>
+        <input id="setInput" type="number" min="1" max="50" value="1" inputmode="numeric" />
+        <button id="btnFull" class="btn primary">生成整套试卷</button>
+        <button id="btnRegen" class="btn ghost" title="同套号换一批题目/选项顺序">🔄 重新生成这套</button>
+      </div>
+
+      <div class="row part-row" role="group" aria-label="单独生成题型">
+        <span class="row-label">单独生成：</span>
+        <button class="btn part" data-part="writing">只看写作</button>
+        <button class="btn part" data-part="listening">只看听力</button>
+        <button class="btn part" data-part="reading">只看阅读</button>
+        <button class="btn part" data-part="translation">只看翻译</button>
+      </div>
+
+      <div class="row cmd-row">
+        <span class="row-label">💬 直接下指令：</span>
+        <input id="cmdInput" type="text" placeholder='如：生成第3套 ｜ 只出翻译题 ｜ 展开阅读答案' />
+        <button id="btnCmd" class="btn">发送</button>
+      </div>
+
+      <div class="row toggle-row">
+        <button id="btnExpandAll" class="btn tiny">展开全部答案</button>
+        <button id="btnCollapseAll" class="btn tiny">全部收起</button>
+        <span id="statusMsg" class="status" role="status"></span>
+      </div>
+    </section>
+
+    <!-- 试卷输出区 -->
+    <section id="paper" class="paper" aria-live="polite">
+      <div class="placeholder">
+        <p>👋 输入套号（1–50）点击「生成整套试卷」，或点上方按钮单独练习某一题型。</p>
+        <p class="muted">答案默认收起，点击每个大题末尾的「👉 点击展开答案+解析」即可查看。</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>本应用为离线静态站点：题库与出题逻辑全部内置，不调用任何外部 API，可免费部署到 GitHub Pages。</p>
+    </footer>
+  </main>
+
+  <!-- 题库数据（全局 window.CET6_DATA） -->
+  <script src="js/data/writing.js"></script>
+  <script src="js/data/translation.js"></script>
+  <script src="js/data/listening.js"></script>
+  <script src="js/data/reading-bank.js"></script>
+  <script src="js/data/reading-matching.js"></script>
+  <script src="js/data/reading-careful-1.js"></script>
+  <script src="js/data/reading-careful-2.js"></script>
+  <!-- 调度、组卷与渲染 -->
+  <script src="js/router.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
